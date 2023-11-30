@@ -1,5 +1,6 @@
 package com.allantrindade.jogodobicho;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -13,29 +14,35 @@ public class Main {
         System.out.println("Olá "+nome+", sua aposta será em qual modalidade?\n(G - Grupo, D - Dezena, C - Centena, M - Milhar,\nDG - Duque de grupo, TG - Terno de grupo,\n" +
                 "DD - Duque de Dezena, TD - Terno de Dezena): ");
         String modal = sc.nextLine().toUpperCase();
-
+        
         if (modal.equals("G")){
             System.out.println("Em qual grupo deseja apostar? (1 a 25)");
             int grp = sc.nextInt();
             System.out.println("Apostou em "+ jogo.getAnimal(grp - 1) +".");
+            String grpString = Integer.toString(grp);
             System.out.println("Qual valor da aposta? R$");
             double vlr = sc.nextDouble();
 
-            Aposta jogador = jogo.realizarApostaG(nome, modal, grp, vlr);
+            ApostaGrupo jogada = new ApostaGrupo(nome, modal, grpString, vlr);
             System.out.println("Hora dos resultados!");
 
             // Sorteio
             Animal sorteado = jogo.sortearAnimal();
+            List<String> grupoSorteado = sorteado.getNumero();
             System.out.println("O animal sorteado foi: "+sorteado.getNome() + " " + sorteado.getNumero());
-           if (jogador.getGrupo() == sorteado.getNumero()){
-               System.out.println("Parabéns! Você ganhou R$"+jogador.getValor() * jogador.multiplicador(jogador.getModalidade()) + ".");
+           if (grupoSorteado.contains(jogada)){
+               System.out.println("Parabéns! Você ganhou R$"+jogada.getValor() * jogada.multiplicador());
+               break;
            }
            else {
                System.out.println("Infelizmente você perdeu...\nTente novamente!");
+               break;
            }
+           
         }
-
+        /*
         sc = new Scanner(System.in);
+        */
       }    
     }
 }
