@@ -5,14 +5,14 @@ import java.util.List;
 abstract class Aposta {
     private String jogador;
     private String modalidade;
-    private String grupo;
-    private List<String> grupos;
+    private int grupo;
+    private List<Integer> grupos;
     private String dezena;
     private String centena;
     private String milhar;
     private double valor;
 
-    public String getGrupo() {
+    public int getGrupo() {
         return grupo;
     }
 
@@ -28,10 +28,11 @@ abstract class Aposta {
         return dezena;
     }
 
-    public List<String> getGrupos() {
+    public List<Integer> getGrupos() {
         return grupos;
     }
     
+
     public String getCentena() {
         return centena;
     }
@@ -48,10 +49,8 @@ abstract class Aposta {
         this.centena = centena;
     }
 
-    public void setGrupos(List<String> grupos) {
-        for (String grupo : grupos){
-            this.grupos.add(grupo);
-        }
+    public void setGrupos(List<Integer> grupos) {
+        this.grupos = grupos;
     }
 
     public void setMilhar(String milhar) {
@@ -71,7 +70,7 @@ abstract class Aposta {
         this.jogador = jogador;
     }
 
-    public void setGrupo(String grupo) {
+    public void setGrupo(int grupo) {
         this.grupo = grupo;
     }
 
@@ -80,8 +79,32 @@ abstract class Aposta {
     }
     
     
-    public abstract double multiplicador();
-    /*
-    public abstract List<String> registro(); 
-    */
+    
+/*
+    public Aposta(String jog, String modal, String dz, double vlr){
+        jogador = jog;
+        modalidade = modal;
+        dezena = dz;
+        valor = vlr;
+    }
+    public Aposta(String jog, String modal, int grp, double vlr){
+        jogador = jog;
+        modalidade = modal;
+        grupo = grp;
+        valor = vlr;
+    }
+    public Aposta(String jog, String modal, List<Integer> grps, double vlr){
+      jogador = jog;
+      modalidade = modal;
+      grupos.addAll(grps);
+      valor = vlr;
+    };
+*/  
+    public abstract void Aposta(String jgdr, String modal, List<Integer> grps, double valor);
+    
+    public abstract int multiplicador(int valor, int mult);
+    
+    
+    
+
 }
