@@ -16,6 +16,7 @@ public class JogoDoBicho {
                 "carneiro", "camelo", "cobra", "coelho", "cavalo", "elefante", "galo", "gato", "jacaré",
                 "leão", "macaco", "porco", "pavão", "peru", "touro", "tigre", "urso", "veado", "vaca"));
         
+        grupos = new ArrayList<>();
         grupos.addAll(Arrays.asList(
         Arrays.asList("01","02","03","04"),Arrays.asList("05", "06","07","08"),Arrays.asList("09", "10","11","12"),Arrays.asList("13", "14","15","16"),Arrays.asList("17", "18","19","20"),
         Arrays.asList("21", "22","23","24"),Arrays.asList("25", "26","27","28"),Arrays.asList("29", "30","31","32"),Arrays.asList("33", "34","35","36"),Arrays.asList("37", "38","39","40"),
@@ -43,7 +44,7 @@ public class JogoDoBicho {
 
         return animais.get(indiceSorteado);
     }
-    
+    /*
     public Aposta realizarApostaDG(String jgdr, String modal, List<Integer> grps, double valor ){
       Aposta jogador = new Aposta(jgdr, modal, grps, valor);
       System.out.println("O jogador "+jgdr+" realizou a aposta na categoria "+modal+", nos grupos "+grps.toString()+", com o valor R$"+valor);
@@ -55,5 +56,5 @@ public class JogoDoBicho {
       System.out.println("O jogador "+jgdr+" realizou a aposta na categoria "+modal+", nos grupos "+grps.toString()+", com o valor R$"+valor);
       return jogador;
     }
-
+    */
 }
