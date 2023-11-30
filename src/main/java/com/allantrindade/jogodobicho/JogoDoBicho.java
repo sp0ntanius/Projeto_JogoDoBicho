@@ -10,6 +10,7 @@ public class JogoDoBicho {
     List<List<String>> grupos;
     public JogoDoBicho() {
         animais = new ArrayList<>();
+        grupos = new ArrayList<>();
         // Adicionando animais com seus grupos correspondentes
         List<String> bichos = new ArrayList<>();
         bichos.addAll(Arrays.asList("avestruz", "águia", "burro", "borboleta", "cachorro", "cabra",

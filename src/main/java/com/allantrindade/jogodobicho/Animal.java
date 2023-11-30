@@ -1,9 +1,10 @@
 package com.allantrindade.jogodobicho;
 
+import java.util.ArrayList;
 import java.util.List;
 public class Animal {
     private String nome;
-    private List<String> numero;
+    private List<String> numero = new ArrayList<>();
 
     public Animal(String name, List<String> numeros){
         nome = name;
