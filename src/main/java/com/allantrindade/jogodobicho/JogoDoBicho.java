@@ -43,7 +43,7 @@ public class JogoDoBicho {
 
         return animais.get(indiceSorteado);
     }
-    
+    /*
     public Aposta realizarApostaDG(String jgdr, String modal, List<Integer> grps, double valor ){
       Aposta jogador = new Aposta(jgdr, modal, grps, valor);
       System.out.println("O jogador "+jgdr+" realizou a aposta na categoria "+modal+", nos grupos "+grps.toString()+", com o valor R$"+valor);
@@ -55,5 +55,5 @@ public class JogoDoBicho {
       System.out.println("O jogador "+jgdr+" realizou a aposta na categoria "+modal+", nos grupos "+grps.toString()+", com o valor R$"+valor);
       return jogador;
     }
-
+    */
 }

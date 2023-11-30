@@ -3,9 +3,9 @@ package com.allantrindade.jogodobicho;
 import java.util.ArrayList;
 
 
-public class Jogador {
+public class Jogador<A extends Aposta> {
     private String nome;
-    private ArrayList<Aposta> apostas;
+    private ArrayList<A> apostas;
     private int ganhos = 0;
     private int perdas = 0;
 
@@ -16,7 +16,7 @@ public class Jogador {
     public void incrementarPerda(int perda){
         this.perdas += perda;
     }
-    public void incrementarApostas(Aposta aposta){
+    public void incrementarApostas(A aposta){
         apostas.add(aposta);
     }
     public void mostrarGanhos(){

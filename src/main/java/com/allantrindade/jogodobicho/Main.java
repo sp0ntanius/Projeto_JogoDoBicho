@@ -30,7 +30,7 @@ public class Main {
             Animal sorteado = jogo.sortearAnimal();
             List<String> grupoSorteado = sorteado.getNumero();
             System.out.println("O animal sorteado foi: "+sorteado.getNome() + " " + sorteado.getNumero());
-           if (grupoSorteado.contains(jogada)){
+           if (grupoSorteado.contains(jogada.getGrupo())){
                System.out.println("Parabéns! Você ganhou R$"+jogada.getValor() * jogada.multiplicador());
                break;
            }
