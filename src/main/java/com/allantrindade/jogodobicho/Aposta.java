@@ -1,12 +1,13 @@
 package com.allantrindade.jogodobicho;
 
+import java.util.ArrayList;
 import java.util.List;
 
 abstract class Aposta {
     private String jogador;
     private String modalidade;
     private String grupo;
-    private List<String> grupos;
+    private List<String> grupos = new ArrayList<>();
     private String dezena;
     private String centena;
     private String milhar;
@@ -81,7 +82,5 @@ abstract class Aposta {
     
     
     public abstract double multiplicador();
-    /*
-    public abstract List<String> registro(); 
-    */
+    
 }

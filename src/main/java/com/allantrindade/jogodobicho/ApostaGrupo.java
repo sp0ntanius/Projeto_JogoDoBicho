@@ -12,16 +12,7 @@ public class ApostaGrupo extends Aposta {
         setGrupo(grp);
         setValor(valor);
     }
-    /*
-    @Override
-    public List<String> registro() {
-        List<String> historico = new ArrayList<>();
-        historico.add("Nome: " + getJogador());
-        historico.add("Valor da Aposta: " + getValor());
-        historico.add("Modalidade: Aposta de grupo - " + getModalidade());
-        return historico;
-    }
-    */
+   
     
     @Override
     public double multiplicador() {

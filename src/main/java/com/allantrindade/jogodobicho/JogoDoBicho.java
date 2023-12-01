@@ -38,13 +38,25 @@ public class JogoDoBicho {
         return animais.get(index);
     }
 
-    public Animal sortearAnimal() {
+    public List<Animal> sortearAnimais() {
+        
+        List<Animal> sorteados = new ArrayList<>();
         Random rd = new Random();
+        
+        for (int i = 0; i < 5; i++){
+            int indiceSorteado = rd.nextInt(animais.size());
+            Animal sorteado = getAnimal(indiceSorteado);
+            sorteados.add(sorteado);
+        }
+        return sorteados;
+    }
+
+    /*
+    Random rd = new Random();
         int indiceSorteado = rd.nextInt(animais.size());
 
         return animais.get(indiceSorteado);
-    }
-    /*
+
     public Aposta realizarApostaDG(String jgdr, String modal, List<Integer> grps, double valor ){
       Aposta jogador = new Aposta(jgdr, modal, grps, valor);
       System.out.println("O jogador "+jgdr+" realizou a aposta na categoria "+modal+", nos grupos "+grps.toString()+", com o valor R$"+valor);
