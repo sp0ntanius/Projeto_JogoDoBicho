@@ -1,8 +1,4 @@
-package com.allantrindade.jogodobicho;
-
-import java.util.ArrayList;
-import java.util.List;
-
+package com.allantrindade.jogodobicho.Apostas;
 
 public class ApostaGrupo extends Aposta {
 

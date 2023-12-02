@@ -1,4 +1,4 @@
-package com.allantrindade.jogodobicho;
+package com.allantrindade.jogodobicho.Jogo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

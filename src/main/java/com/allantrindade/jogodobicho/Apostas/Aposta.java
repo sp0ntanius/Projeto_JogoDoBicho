@@ -1,9 +1,9 @@
-package com.allantrindade.jogodobicho;
+package com.allantrindade.jogodobicho.Apostas;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Aposta {
+public abstract class Aposta {
     private String jogador;
     private String modalidade;
     private String grupo;

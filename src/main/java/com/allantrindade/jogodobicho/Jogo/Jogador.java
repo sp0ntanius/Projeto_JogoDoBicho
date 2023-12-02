@@ -1,6 +1,8 @@
-package com.allantrindade.jogodobicho;
+package com.allantrindade.jogodobicho.Jogo;
 
 import java.util.ArrayList;
+
+import com.allantrindade.jogodobicho.Apostas.Aposta;
 
 
 public class Jogador<A extends Aposta> {
@@ -8,6 +10,14 @@ public class Jogador<A extends Aposta> {
     private ArrayList<A> apostas;
     private int ganhos = 0;
     private int perdas = 0;
+
+    public Jogador(String name){
+        nome = name;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 
     public void incrementarGanho(int ganho){
         this.ganhos += ganho;

@@ -4,15 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.allantrindade.jogodobicho.Apostas.ApostaGrupo;
+import com.allantrindade.jogodobicho.Jogo.Animal;
+import com.allantrindade.jogodobicho.Jogo.BichoIterator;
+import com.allantrindade.jogodobicho.Jogo.Jogador;
+import com.allantrindade.jogodobicho.Jogo.JogoDoBicho;
+
 public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         JogoDoBicho jogo = new JogoDoBicho();
+
         System.out.println("Bem vindo ao jogo do bicho!\nInsira seu nome: ");
         String nome = sc.nextLine();
+        Jogador novoJogador = new Jogador<>(nome);
         while (true) {
-            System.out.println("Olá "+nome+", sua aposta será em qual modalidade?\n(G - Grupo, D - Dezena, C - Centena, M - Milhar,\nDG - Duque de grupo, TG - Terno de grupo,\n" +
+            System.out.println("Olá "+novoJogador.getNome()+", sua aposta será em qual modalidade?\n(G - Grupo, D - Dezena, C - Centena, M - Milhar,\nDG - Duque de grupo, TG - Terno de grupo,\n" +
                     "DD - Duque de Dezena, TD - Terno de Dezena): ");
             String modal1 = sc.nextLine().toUpperCase();
             
@@ -36,7 +44,16 @@ public class Main {
                 // Sorteio
                 List<Animal> sorteados = new ArrayList<>();
                 sorteados = jogo.sortearAnimais();
-
+                // Utilização do Iterator para verificar se há prêmios repetidos
+                while (true){
+                    BichoIterator iterator = new BichoIterator(sorteados, sorteados.size());
+                    if (iterator.temRepetidos()){
+                        sorteados.clear();
+                        sorteados.addAll(jogo.sortearAnimais());
+                    }
+                    else break;
+                }
+                    
                 // Separação para comparação entre o animal apostado e o animal sorteado
                 List<List<String>> gruposSorteados = new ArrayList<>();
                 for (Animal gpsSorteados2 : sorteados){
