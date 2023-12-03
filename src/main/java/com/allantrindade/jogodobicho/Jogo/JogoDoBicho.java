@@ -43,6 +43,36 @@ public class JogoDoBicho {
         return animais.get(index);
     }
 
+    public Animal getAnimal(String numero){
+        if (numero.length() == 2){
+            for (Animal animal : this.animais){
+                List<String> grupos = new ArrayList<>();
+                grupos = animal.getNumeros();
+                if (grupos.contains(numero)) return animal;
+            }
+        }
+
+        if (numero.length() == 3){
+            String sub = numero.substring(1, 3);
+            for (Animal animal : this.animais){
+                List<String> grupos = new ArrayList<>();
+                grupos = animal.getNumeros();
+                if (grupos.contains(sub)) return animal;
+            }
+        }
+
+        if (numero.length() == 4){
+            String sub = numero.substring(2, 4);
+            for (Animal animal : this.animais) {
+                List<String> grupos = new ArrayList<>();
+                grupos = animal.getNumeros();
+                if (grupos.contains(sub)) return animal;
+            }
+        }
+
+        return null;
+    }
+
     public List<Animal> sortearAnimais() {
         
         List<Animal> sorteados = new ArrayList<>();

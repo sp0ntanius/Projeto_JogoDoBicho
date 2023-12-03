@@ -4,8 +4,8 @@ import com.allantrindade.jogodobicho.Jogo.Animal;
 import com.allantrindade.jogodobicho.Padrões.ApostaVisitor;
 
 public class ApostaCentena extends Aposta{
-    public ApostaCentena(String jgdr, String modal, String ctn, double vlr){
-        setJogador(jgdr);
+    public ApostaCentena(Animal anim, String modal, String ctn, double vlr){
+        setAnimalApostado(anim);
         setModalidade(modal);
         setCentena(ctn);
         setValor(vlr);

@@ -5,28 +5,29 @@ import java.util.ArrayList;
 import com.allantrindade.jogodobicho.Apostas.Aposta;
 
 
-public class Jogador<A extends Aposta> {
+public class Jogador {
     private String nome;
-    private ArrayList<A> apostas;
-    private int ganhos = 0;
-    private int perdas = 0;
+    private ArrayList<Aposta> apostas;
+    private double ganhos = 0;
+    private double perdas = 0;
 
     public Jogador(String name){
         nome = name;
+        apostas = new ArrayList<>();
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void incrementarGanho(int ganho){
+    public void incrementarGanho(double ganho){
         this.ganhos += ganho;
     }
 
-    public void incrementarPerda(int perda){
+    public void incrementarPerda(double perda){
         this.perdas += perda;
     }
-    public void incrementarApostas(A aposta){
+    public void incrementarApostas(Aposta aposta){
         apostas.add(aposta);
     }
     public void mostrarGanhos(){
