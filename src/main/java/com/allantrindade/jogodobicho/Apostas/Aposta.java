@@ -3,15 +3,27 @@ package com.allantrindade.jogodobicho.Apostas;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.allantrindade.jogodobicho.Jogo.Animal;
+import com.allantrindade.jogodobicho.Padrões.ApostaVisitor;
+
 public abstract class Aposta {
     private String jogador;
     private String modalidade;
+    private Animal animalApostado;
     private String grupo;
     private List<String> grupos = new ArrayList<>();
     private String dezena;
     private String centena;
     private String milhar;
     private double valor;
+
+    public Animal getAnimalApostado() {
+        return animalApostado;
+    }
+
+    public void setAnimalApostado(Animal animalApostado) {
+        this.animalApostado = animalApostado;
+    }
 
     public String getGrupo() {
         return grupo;
@@ -60,7 +72,7 @@ public abstract class Aposta {
     }
 
     public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
+        this.modalidade = modalidade.toUpperCase();
     }
     
     public void setDezena(String dezena) {
@@ -82,5 +94,5 @@ public abstract class Aposta {
     
     
     public abstract double multiplicador();
-    
+    public abstract boolean accept(ApostaVisitor visitor, List<String> sorteados);
 }

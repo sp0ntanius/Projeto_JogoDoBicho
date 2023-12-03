@@ -1,5 +1,7 @@
-package com.allantrindade.jogodobicho.Jogo;
+package com.allantrindade.jogodobicho.Padrões;
 import java.util.*;
+
+import com.allantrindade.jogodobicho.Jogo.Animal;
 
 public class BichoIterator implements Iterator<Animal>{
     private List<Animal> animais;

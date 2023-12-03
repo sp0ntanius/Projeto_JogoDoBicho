@@ -4,20 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 public class Animal {
     private String nome;
-    private List<String> numero = new ArrayList<>();
+    private String grupo;
+    private List<String> numeros = new ArrayList<>();
 
-    public Animal(String name, List<String> numeros){
+    public Animal(String name, String group, List<String> numeros){
         nome = name;
-        
+        grupo = group;
         for (String num : numeros){
-            this.numero.add(num);    
+            this.numeros.add(num);    
         }
     }
+    
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+    
     public String getNome() {
         return nome;
     }
-    public List<String> getNumero() {
-        return numero;
+    
+    public List<String> getNumeros() {
+        return numeros;
     }
 
     public void setNome(String nome) {
@@ -26,6 +37,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return getNome() + " (" + getNumero() + ")";
+        return getNome() + " (" + getNumeros() + ")";
     }
 }

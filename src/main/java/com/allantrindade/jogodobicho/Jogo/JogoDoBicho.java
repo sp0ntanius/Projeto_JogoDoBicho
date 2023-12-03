@@ -7,17 +7,22 @@ import java.util.Random;
 
 public class JogoDoBicho {
     List<Animal> animais;
-    List<List<String>> grupos;
+    List<String> grupos;
+    List<List<String>> numeros;
     public JogoDoBicho() {
         animais = new ArrayList<>();
         grupos = new ArrayList<>();
-        // Adicionando animais com seus grupos correspondentes
+        numeros = new ArrayList<>();
+        // Adicionando animais com seus numeros correspondentes
         List<String> bichos = new ArrayList<>();
         bichos.addAll(Arrays.asList("avestruz", "águia", "burro", "borboleta", "cachorro", "cabra",
                 "carneiro", "camelo", "cobra", "coelho", "cavalo", "elefante", "galo", "gato", "jacaré",
                 "leão", "macaco", "porco", "pavão", "peru", "touro", "tigre", "urso", "veado", "vaca"));
         
-        grupos.addAll(Arrays.asList(
+        grupos.addAll(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
+                                    "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25"));
+        
+        numeros.addAll(Arrays.asList(
         Arrays.asList("01","02","03","04"),Arrays.asList("05", "06","07","08"),Arrays.asList("09", "10","11","12"),Arrays.asList("13", "14","15","16"),Arrays.asList("17", "18","19","20"),
         Arrays.asList("21", "22","23","24"),Arrays.asList("25", "26","27","28"),Arrays.asList("29", "30","31","32"),Arrays.asList("33", "34","35","36"),Arrays.asList("37", "38","39","40"),
         Arrays.asList("41", "42","43","44"),Arrays.asList("45", "46","47","48"),Arrays.asList("49", "50","51","52"),Arrays.asList("53", "54","55","56"),Arrays.asList("57", "58","59","60"),
@@ -25,7 +30,7 @@ public class JogoDoBicho {
         Arrays.asList("81", "82","83","84"),Arrays.asList("85", "86","87","88"),Arrays.asList("89", "90","91","92"),Arrays.asList("93", "94","95","96"),Arrays.asList("97", "98","99","00")));
         
         for (int i = 0; i < bichos.size() ; i++) {
-            Animal bicho = new Animal(bichos.get(i), grupos.get(i));
+            Animal bicho = new Animal(bichos.get(i), grupos.get(i), numeros.get(i));
             animais.add(bicho);
         }
     }
@@ -49,6 +54,19 @@ public class JogoDoBicho {
             sorteados.add(sorteado);
         }
         return sorteados;
+    }
+
+    public List<String> sortearMilhares(){
+        List<String> numerosSorteados = new ArrayList<>();
+        Random rd = new Random();
+
+        for (int i=0; i<5; i++){
+            int numero = rd.nextInt(1000, 10000);
+            String numString = Integer.toString(numero);
+            numerosSorteados.add(numString);
+        }
+
+        return numerosSorteados;
     }
 
     /*

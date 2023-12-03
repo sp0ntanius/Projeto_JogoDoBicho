@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.allantrindade.jogodobicho.Apostas.ApostaGrupo;
-import com.allantrindade.jogodobicho.Jogo.Animal;
-import com.allantrindade.jogodobicho.Jogo.BichoIterator;
-import com.allantrindade.jogodobicho.Jogo.Jogador;
-import com.allantrindade.jogodobicho.Jogo.JogoDoBicho;
+import com.allantrindade.jogodobicho.Apostas.*;
+import com.allantrindade.jogodobicho.Jogo.*;
+import com.allantrindade.jogodobicho.Padrões.*;
 
 public class Main {
 
@@ -27,6 +25,7 @@ public class Main {
             if (modal1.equals("G")){
                 System.out.println("Em qual grupo deseja apostar? (1 a 25)");
                 int grp = sc.nextInt();
+                sc.nextLine();
                 
                 System.out.println("Deseja apostar no 1º prêmio ou em todos os prêmios? (C - 1º prêmio / T - Todos os prêmios)");
                 
@@ -38,7 +37,7 @@ public class Main {
                 System.out.println("Qual valor da aposta? R$");
                 double vlr = sc.nextDouble();
 
-                ApostaGrupo jogada = new ApostaGrupo(nome, modal2, grpString, vlr);
+                ApostaGrupo jogada = new ApostaGrupo(jogo.getAnimal(grp - 1), modal2, grpString, vlr);
                 System.out.println("Hora dos resultados!");
 
                 // Sorteio
@@ -51,33 +50,32 @@ public class Main {
                         sorteados.clear();
                         sorteados.addAll(jogo.sortearAnimais());
                     }
+
                     else break;
                 }
                     
                 // Separação para comparação entre o animal apostado e o animal sorteado
-                List<List<String>> gruposSorteados = new ArrayList<>();
-                for (Animal gpsSorteados2 : sorteados){
-                    gruposSorteados.add(gpsSorteados2.getNumero());
-
+                List<String> gruposSorteados = new ArrayList<>();
+                
+                for (Animal animais : sorteados){
+                    gruposSorteados.add(animais.getGrupo());
                 }
+
+                // Utilização do Visitor para comparação
+                ApostaVisitor visitor = new VerificadorApostaVisitor();
+                boolean resultado = jogada.accept(visitor, gruposSorteados);
+
                 // Print dos animais sorteados e seus números
                 System.out.println("Os animais sorteados foram:");
                 for (Animal sorteados3 : sorteados){
-                    System.out.println(sorteados3.getNome() + " " + sorteados3.getNumero());
+                    System.out.println(sorteados3.getNome() + " " + sorteados3.getNumeros());
                 }
-                // Verificação dos grupos sorteados com o grupo apostado
-                for (List<String> grupoSorteados : gruposSorteados){
 
-                    if (grupoSorteados.contains(jogada.getGrupo())){
-                        System.out.println("Parabéns! Você ganhou R$"+jogada.getValor() * jogada.multiplicador());
-                        break;
-                    }
-                    else {
-                        System.out.println("Infelizmente você perdeu...\nTente novamente!");
-                        break;
-                    }
-                    
+                // Verificação dos grupos sorteados com o grupo apostado
+                if (resultado){
+                    System.out.println("Parabéns!");
                 }
+                else System.out.println("Infelizmente você perdeu...");
             }
             
             sc = new Scanner(System.in);
