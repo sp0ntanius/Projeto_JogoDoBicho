@@ -52,7 +52,7 @@ public class JogoDoBicho {
             }
         }
 
-        if (numero.length() == 3){
+        else if (numero.length() == 3){
             String sub = numero.substring(1, 3);
             for (Animal animal : this.animais){
                 List<String> grupos = new ArrayList<>();
@@ -61,7 +61,7 @@ public class JogoDoBicho {
             }
         }
 
-        if (numero.length() == 4){
+        else if (numero.length() == 4){
             String sub = numero.substring(2, 4);
             for (Animal animal : this.animais) {
                 List<String> grupos = new ArrayList<>();

@@ -7,11 +7,11 @@ import com.allantrindade.jogodobicho.Jogo.Animal;
 import com.allantrindade.jogodobicho.Padrões.ApostaVisitor;
 
 public abstract class Aposta {
-    private String jogador;
     private String modalidade;
     private Animal animalApostado;
     private String grupo;
-    private List<String> grupos = new ArrayList<>();
+    private List<String> gruposApostados = new ArrayList<>();
+    private List<String> dezenasApostadas = new ArrayList<>();
     private String dezena;
     private String centena;
     private String milhar;
@@ -41,8 +41,12 @@ public abstract class Aposta {
         return dezena;
     }
 
-    public List<String> getGrupos() {
-        return grupos;
+    public List<String> getDezenasApostadas() {
+        return dezenasApostadas;
+    }
+
+    public List<String> getGruposApostados() {
+        return gruposApostados;
     }
     
     public String getCentena() {
@@ -53,18 +57,16 @@ public abstract class Aposta {
         return milhar;
     }
 
-    public String getJogador() {
-        return jogador;
-    }
-
     public void setCentena(String centena) {
         this.centena = centena;
     }
 
-    public void setGrupos(List<String> grupos) {
-        for (String grupo : grupos){
-            this.grupos.add(grupo);
-        }
+    public void setGruposApostados(String grupos) {
+        this.gruposApostados.add(grupo);
+    }
+
+    public void setDezenasApostadas(String dezenas) {
+        this.dezenasApostadas.add(dezenas);
     }
 
     public void setMilhar(String milhar) {
@@ -77,11 +79,6 @@ public abstract class Aposta {
     
     public void setDezena(String dezena) {
         this.dezena = dezena;
-    }
-
-    
-    public void setJogador(String jogador) {
-        this.jogador = jogador;
     }
 
     public void setGrupo(String grupo) {

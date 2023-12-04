@@ -72,4 +72,60 @@ public class VerificadorApostaVisitor implements ApostaVisitor{
             return false;
         }
     }
+
+    @Override
+    public boolean visit(DuqueGrupo jogada, List<String> sorteados){
+        for (String apostado : jogada.getGruposApostados()){
+            if (!sorteados.contains(apostado)) return false; // Se qualquer número não estiver na lista sorteada, retorna false.
+        }
+        return true; // Retorno true caso os dois números apostados se encontram na lista.
+    }
+
+    @Override
+    public boolean visit(DuqueDezena jogada, List<String> sorteados){
+        for (String dezena : jogada.getDezenasApostadas()) {
+            boolean dezenaEncontrada = false;
+            
+            for (String numeroSorteado : sorteados) {
+                String dezenasSorteadas = numeroSorteado.substring(1);
+                if (dezenasSorteadas.equals(dezena)) {
+                    dezenaEncontrada = true;
+                    break;
+                }
+            }
+            if (!dezenaEncontrada) {
+                return false; // Se a dezena apostada não for encontrada nos números sorteados, retorna falso
+            }
+        }
+        
+        return true; // Se todas as dezenas estiverem nos números sorteados, retorna verdadeiro
+    }
+
+    @Override
+    public boolean visit(TernoGrupo jogada, List<String> sorteados){
+        for (String apostado : jogada.getGruposApostados()){
+            if (!sorteados.contains(apostado)) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean visit(TernoDezena jogada, List<String> sorteados){
+        for (String dezena : jogada.getDezenasApostadas()) {
+            boolean dezenaEncontrada = false;
+            
+            for (String numeroSorteado : sorteados) {
+                String dezenasSorteadas = numeroSorteado.substring(1);
+                if (dezenasSorteadas.equals(dezena)) {
+                    dezenaEncontrada = true;
+                    break;
+                }
+            }
+            if (!dezenaEncontrada) {
+                return false; // Se a dezena apostada não for encontrada nos números sorteados, retorna falso
+            }
+        }
+        
+        return true; // Se todas as dezenas estiverem nos números sorteados, retorna verdadeiro
+    }
 }
